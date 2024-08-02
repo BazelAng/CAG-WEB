@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Art Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .gallery {
+      padding: 10px;
+      border: 2px solid #0c072a;
+      text-align: center;
+      text-decoration: none; /* Remove underline from link */
+      color: inherit; /* Use the color of the surrounding text */
+
+      
+    }
+
+    .gallery:hover {
+      border: 4px solid #ff0000;
+    }
+
+    .details {
+      padding: 15px;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+    }
+
+    /* Ensure proper spacing and alignment for columns */
+    .col-md-4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem; /* Space between rows */
+    }
+
+    #buttonlink{
+      text-decoration: none;
+      color: inherit;
+    }
+    
+
+  </style>
+</head>
+<body>
+  <%- include ('partials/navbar.ejs') %>
+  <h1 class="text-center">Welcome to Art Gallery</h1>
+
+  <div class="container">
+    <br>
+    <div class="text-center">
+      <h2>Discover the Artworks</h2>
+    </div>
+    <br>
+
+    <div class="row">
+      <% for(let i = 0; i < artwork.length; i++) { %>
+        <div class="col-md-4 mb-4">
+          <a id="buttonlink" href="/artwork/<%= artwork[i].art_Id %>">
+            <div class="gallery">
+              
+              <img src="/images/<%= artwork[i].image %>" alt="Artwork Image">
+              <div class="details">
+                <div id="name">
+                  <% if (artwork[i].artwork_name.length >15) {%>
+                  <h5><font size='-1'><%= artwork[i].artwork_name %></font></h5>
+                 <% }else{%> <h5><%= artwork[i].artwork_name %></h5>
+                  <%}%>
+                </div>
+                <div id="artist">
+                  <%= artwork[i].artist_name %><br>
+                </div>
+                <div id="year">
+                  <%= artwork[i].year %><br>
+                </div>
+                <div id="country">
+                  <%= artwork[i].country %><br>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</body>
+</html>
