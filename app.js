@@ -14,10 +14,10 @@ const upload = multer({ storage: storage });
 //set EJS as view engine
 app.set('view engine', 'ejs', 'html');
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'c237-artgallery'
+host: "freedb.tech",
+user: "freedb_artga",
+password:"F2fUpKk624tEts?",
+database:"freedb_artgal"
 });
 
 
